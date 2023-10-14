@@ -1,3 +1,29 @@
+/* Fonts Import Here */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&family=Rancho&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-Raleway;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-Rancho;
+    }
+}
+
+
+
+@layer components {
+    .header-bg {
+        background: url("./assets/headerBG.jpeg");
+    }
+}
