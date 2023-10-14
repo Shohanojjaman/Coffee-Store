@@ -1,10 +1,12 @@
 import Hero from '../Utilities/Hero';
+import Services from '../Utilities/Services';
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero />
-    </div>
+      <Services />
+    </>
   );
 };
 
