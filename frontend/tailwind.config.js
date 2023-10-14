@@ -14,6 +14,12 @@ export default {
         Rancho: "'Rancho', cursive",
         Raleway: "'Raleway', sans-serif",
       },
+      colors: {
+        theme: '#331A15',
+        secondary: '#E3B577',
+        body: '#1B1A1A',
+        'light-body': '#5C5B5B',
+      },
     },
   },
   plugins: [],
