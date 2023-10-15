@@ -49,4 +49,9 @@
         background: url('/assets/heroBG.png');
         @apply bg-cover bg-[-100px] md:bg-center
     }
+
+    .add-coffee {
+        background: url('/assets/add-coffe-bg.png');
+        @apply bg-cover bg-center md:bg-center
+    }
 }
