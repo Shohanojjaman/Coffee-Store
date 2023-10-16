@@ -51,12 +51,31 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/coffee/:id', async (req, res) => {
+      const id = req.params.id;
+      const coffee = req.body;
+      const filter = { _id: new ObjectId(id) };
+      const option = { upsert: true };
+      const updateCoffee = {
+        $set: {
+          name: coffee.name,
+          chef: coffee.chef,
+          supplier: coffee.supplier,
+          taste: coffee.taste,
+          photo: coffee.photo,
+          price: coffee.price,
+        },
+      };
+
+      const result = await coffeeCollection.updateOne(filter, updateCoffee, option);
+      res.send(result);
+    });
+
     app.delete('/coffee/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await coffeeCollection.deleteOne(query);
       res.send(result);
-      console.log(result);
     });
 
     await client.db('admin').command({ ping: 1 });

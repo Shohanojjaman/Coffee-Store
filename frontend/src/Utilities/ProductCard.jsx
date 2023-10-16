@@ -60,7 +60,7 @@ const ProductCard = ({ coffee, index, setCoffees, coffees }) => {
             <AiFillEye />
           </button>
         </Link>
-        <Link>
+        <Link to={`/update/${_id}`}>
           <button className="bg-[#3C393B] text-2xl p-2 rounded-lg text-white">
             <BiSolidPencil />
           </button>
