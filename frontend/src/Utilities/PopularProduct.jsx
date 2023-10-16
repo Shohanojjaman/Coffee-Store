@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import SectionTitle from './SectionTitle';
 
-const PopularProduct = ({ coffees }) => {
+const PopularProduct = ({ coffees, setCoffees }) => {
   console.log(coffees);
   return (
     <div className="py-32 popular-product" data-aos="fade-up">
@@ -20,7 +20,7 @@ const PopularProduct = ({ coffees }) => {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-6 mt-12">
           {coffees?.map((coffee, index) => (
-            <ProductCard key={coffee?._id} coffee={coffee} index={index} />
+            <ProductCard key={coffee?._id} coffee={coffee} setCoffees={setCoffees} coffees={coffees} index={index} />
           ))}
         </div>
       </div>
@@ -30,6 +30,7 @@ const PopularProduct = ({ coffees }) => {
 
 PopularProduct.propTypes = {
   coffees: PropTypes.array.isRequired,
+  setCoffees: PropTypes.func.isRequired,
 };
 
 export default PopularProduct;
