@@ -11,6 +11,7 @@ const MainRoutes = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+        loader: () => fetch('http://localhost:8080/coffee'),
       },
       {
         path: '/addcoffee',
