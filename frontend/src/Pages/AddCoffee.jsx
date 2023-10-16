@@ -1,7 +1,53 @@
 import { IoArrowBack } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddCoffee = () => {
+  const handleAddCoffee = (event) => {
+    event.preventDefault();
+
+    // Get form data
+    const form = event.target;
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+    const price = form.price.value;
+
+    const coffee = { name, chef, supplier, taste, category, details, photo, price };
+    console.log(coffee);
+
+    fetch('http://localhost:8080/addcoffee', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(coffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.insertedId);
+        if (data.insertedId) {
+          toast.success('New coffee added successfully!', {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 0,
+            theme: 'light',
+          });
+          form.reset();
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="add-coffee py-12">
       <div className="container">
@@ -23,7 +69,7 @@ const AddCoffee = () => {
               letters, as opposed to using Content here.
             </p>
           </div>
-          <form className="grid grid-cols-2 gap-6">
+          <form onSubmit={handleAddCoffee} className="grid grid-cols-2 gap-6">
             <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
               <label htmlFor="name" className="text-xl font-semibold">
                 Name
@@ -34,6 +80,7 @@ const AddCoffee = () => {
                 id="name"
                 placeholder="Enter coffee name"
                 className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
               />
             </div>
             <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
@@ -46,6 +93,7 @@ const AddCoffee = () => {
                 id="chef"
                 placeholder="Enter coffee chef"
                 className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
               />
             </div>
             <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
@@ -58,6 +106,7 @@ const AddCoffee = () => {
                 id="supplier"
                 placeholder="Enter coffee supplier"
                 className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
               />
             </div>
             <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
@@ -70,6 +119,7 @@ const AddCoffee = () => {
                 id="taste"
                 placeholder="Enter coffee taste"
                 className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
               />
             </div>
             <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
@@ -82,6 +132,7 @@ const AddCoffee = () => {
                 id="category"
                 placeholder="Enter coffee category"
                 className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
               />
             </div>
             <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
@@ -94,10 +145,11 @@ const AddCoffee = () => {
                 id="details"
                 placeholder="Enter coffee details"
                 className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
               />
             </div>
-            <div className="space-y-4 col-span-2 flex flex-col text-[#1b1a1acc]">
-              <label htmlFor="name" className="text-xl font-semibold">
+            <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
+              <label htmlFor="photo" className="text-xl font-semibold">
                 Photo
               </label>
               <input
@@ -106,12 +158,26 @@ const AddCoffee = () => {
                 id="photo"
                 placeholder="Enter photo URL"
                 className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
+              />
+            </div>
+            <div className="space-y-4 flex flex-col text-[#1b1a1acc]">
+              <label htmlFor="price" className="text-xl font-semibold">
+                Price
+              </label>
+              <input
+                type="number"
+                name="price"
+                id="price"
+                placeholder="Enter price URL"
+                className="p-3 rounded-md focus:outline-2 outline-secondary transition-all duration-200"
+                required
               />
             </div>
             <input
-              type="button"
+              type="submit"
               value="Add Coffee"
-              className="primary-btn col-span-2 rounded-md border-2 border-theme"
+              className="primary-btn col-span-2 rounded-md border-2 border-theme cursor-pointer"
             />
           </form>
         </div>
