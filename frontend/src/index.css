@@ -24,12 +24,12 @@
 
 @layer components {
     .header-bg {
-        background: url("./assets/headerBG.jpeg");
+        background: url("https://raw.githubusercontent.com/ProgrammingHero1/coffee-store-espresso-emporium/main/images/more/15.jpg");
         @apply bg-cover bg-center
     }
 
     .footer-bg {
-        background: url("./assets/footerBG.jpg");
+        background: url("https://raw.githubusercontent.com/ProgrammingHero1/coffee-store-espresso-emporium/main/images/more/13.jpg");
         @apply bg-cover bg-center
     }
 
