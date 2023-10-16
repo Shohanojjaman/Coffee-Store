@@ -26,7 +26,7 @@ const ProductCard = ({ coffee, index }) => {
         </p>
       </div>
       <div className="flex sm:flex-col gap-4">
-        <Link>
+        <Link to={`/coffee/${_id}`}>
           <button className="bg-[#D2B48C] text-2xl p-2 rounded-lg text-white">
             <AiFillEye />
           </button>
