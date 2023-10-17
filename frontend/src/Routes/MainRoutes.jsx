@@ -13,7 +13,7 @@ const MainRoutes = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('http://localhost:8080/coffee'),
+        loader: () => fetch('https://coffee-store-backend-auh67h67g-shohanojjaman-emons-projects.vercel.app/coffee'),
       },
       {
         path: '/addcoffee',
@@ -22,12 +22,14 @@ const MainRoutes = createBrowserRouter([
       {
         path: '/coffee/:id',
         element: <ProductDetails />,
-        loader: ({ params }) => fetch(`http://localhost:8080/coffee/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://coffee-store-backend-auh67h67g-shohanojjaman-emons-projects.vercel.app/coffee/${params.id}`),
       },
       {
         path: '/update/:id',
         element: <UpdateCoffee />,
-        loader: ({ params }) => fetch(`http://localhost:8080/coffee/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://coffee-store-backend-auh67h67g-shohanojjaman-emons-projects.vercel.app/coffee/${params.id}`),
       },
     ],
   },

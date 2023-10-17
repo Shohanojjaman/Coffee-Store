@@ -21,7 +21,7 @@ const ProductCard = ({ coffee, index, setCoffees, coffees }) => {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
     }).then(() => {
-      fetch(`http://localhost:8080/coffee/${id}`, {
+      fetch(`https://coffee-store-backend-auh67h67g-shohanojjaman-emons-projects.vercel.app/coffee/${id}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())

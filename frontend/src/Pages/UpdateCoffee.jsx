@@ -23,7 +23,7 @@ const UpdateCoffee = () => {
     const updatedCoffee = { name, chef, supplier, taste, category, details, photo, price };
     console.log(updatedCoffee);
 
-    fetch(`http://localhost:8080/coffee/${_id}`, {
+    fetch(`https://coffee-store-backend-auh67h67g-shohanojjaman-emons-projects.vercel.app/coffee/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -186,7 +186,7 @@ const UpdateCoffee = () => {
             </div>
             <input
               type="submit"
-              value="Add Coffee"
+              value="Update Coffee"
               className="primary-btn col-span-2 rounded-md border-2 border-theme cursor-pointer"
             />
           </form>
